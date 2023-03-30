@@ -1,80 +1,243 @@
+/* Fonts*/
+    @font-face {
+    font-family: HankenGrotesk;
+    font-display: swap;
+    font-weight: 100 900;
+    src: url(assets/fonts/hankengrotesk-variablefont_wght.ttf) format('truetype');
+    }
+
 :root {
-   /* Primary Colors */
+    /* Font Weight & Size*/
+        --font-wght-regular: 500;
+        --font-wght-medium: 700;
+        --font-wght-bold: 800;
 
-    --color-Light-red: hsl(0, 100%, 67%);
-    --Orangey-yellow: hsl(39, 100%, 56%);
-    --Green-teal: hsl(166, 100%, 37%);
-    --Cobalt-blue: hsl(234, 85%, 45%);
+        --font-size-regular: 1.25rem;
+        --font-size-medium: 1.75rem;
+        --font-size-bold: 2rem;
 
-   /* Gradient Colors*/
-   
+        --font-family-default: 'HankenGrotesk', sans-serif;
+
+    /* Accent Color*/
+
+        --Light-red: 0, 100%, 67%;
+        --Orangey-yellow: 39, 100%, 56%;
+        --Green-teal: 166, 100%, 37%;
+        --Cobalt-blue: 234, 85%, 45%;
+
+                        /* Var Accent Color*/
+
+                        --accent-color-1: var(--Light-red);
+                        --accent-color-2: var(--Orangey-yellow);
+                        --accent-color-3: var(--Green-teal);
+                        --accent-color-4: var(--Cobalt-blue);
+
+    /* Primary Colors */
+
     --Light-slate-blue-bg: hsl(252, 100%, 67%);
     --Light-royal-blue-bg: hsl(241, 81%, 54%);
+    
+                        /* Var Primary Colors*/
+                        --primary-color-1: var(--Light-slate-blue-bg);
+                        --primary-color-2: var(--Light-royal-blue-bg);
 
+    /* Secondary Colors*/
+    
     --Violet-blue-circle: hsla(256, 72%, 46%, 1);
     --Persian-blue-circle: hsla(241, 72%, 46%, 0);
+                        
+                        /* Var Secondary Colors*/
+                        --secondary-color-1: var(--Violet-blue-circle);
+                        --secondary-color-2: var(--Persian-blue-circle);
+
+                        /* Var Gradient Colors*/
+
+                        --gradiant-primary: linear-gradient(
+                            var(--primary-color-1), var(--primary-color-2)
+                        );
+
+                        --gradient-to-transparent: linear-gradient(
+                            var(--secondary-color-1), var(--secondary-color-2)
+                        );
 
    /* Nutural Colors*/
-   --White: hsl(0, 0%, 100%);
-   --Pale-blue: hsl(221, 100%, 96%);
-   --Light-lavender: hsl(241, 100%, 89%);
-   --Dark-gray-blue: hsl(224, 30%, 27%);
 
-   
+    --White: 0, 0%, 100%;
+    --Pale-blue: 221, 100%, 96%;
+    --Light-lavender: 241, 100%, 89%;
+    --Dark-gray-blue: 224, 30%, 27%;
+
+                        /* Var Nutural Color*/
+                            --nutural-color-100: hsl(var(--White));
+                            --nutural-color-200: hsl(var(--Pale-blue));
+                            --nutural-color-300: hsl(var(--Light-lavander));
+                            --nutural-color-700: hsl(var(--Dark-gray-blue));  
 }
 
-/*
-  1. Use a more-intuitive box-sizing model.
-*/
-*, *::before, *::after {
-    box-sizing: border-box;
+/* CSS Reset*/
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+        }
+    * {
+        margin: 0;
+        font: inherit;
+        }
+    html, body {
+        height: 100%;
+        }
+    body {
+        font-family: var(--font-family-default);
+        font-size: var(--font-size-regular);
+        color: var(--nutural-color-700);
+        }
+    img, svg {
+        display: block;
+        max-width: 100%;
+        }
+/* CSS Reset*/
+
+@media (min-width: 600px) {
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+}
+
+.flex-group {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
   }
-  /*
-    2. Remove default margin
-  */
-  * {
-    margin: 0;
+  
+  .grid-flow {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
   }
-  /*
-    3. Allow percentage-based heights in the application
-  */
-  html, body {
-    height: 100%;
+  
+  .grid-flow[data-spacing="large"] {
+    gap: 2rem;
   }
-  /*
-    Typographic tweaks!
-    4. Add accessible line-height
-    5. Improve text rendering
-  */
-  body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  /*
-    6. Improve media defaults
-  */
-  img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-  }
-  /*
-    7. Remove built-in form typography styles
-  */
-  input, button, textarea, select {
-    font: inherit;
-  }
-  /*
-    8. Avoid text overflows
-  */
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-  }
-  /*
-    9. Create a root stacking context
-  */
-  #root, #__next {
-    isolation: isolate;
-  }
+
+.section-title {
+    font-weight: var(--font-wght-bold);
+    font-size: var(--font-size-medium);
+    }
+
+.button {
+    color: var(--nutural-color-100); 
+    line-height: 1;
+    background: var(--nutural-color-700); 
+    padding: 1rem 2rem;
+    border: 0;
+    border-radius: 100vw;
+    cursor: pointer;
+    }
+  
+.button:hover,
+.button:focus-visible {
+    background: var(--gradiant-primary);
+    }
+
+.results-summary {
+    --padding: 2.5rem;
+    --border-radius: 2rem;
+
+    max-width: 46rem;
+    display: grid;
+    }
+
+    @media (min-width: 600px) {
+    .results-summary {
+          margin-inline: 1rem;
+          grid-template-columns: 1fr 1fr;
+          border-radius: var(--border-radius);
+          overflow: hidden;
+          box-shadow: .5rem 1rem 3rem 
+           hsl(var(--Dark-gray-blue), .2);
+        }
+    }
+    
+    
+    .results {
+        color: hsl(var(--White), .7);
+        text-align: center;
+        background: var(--gradiant-primary);
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        padding: var(--padding) calc(var(--padding) * 1.5);
+        }
+        
+        @media (min-width: 600px) {
+            .results {
+                border-radius: var(--border-radius);
+            }
+        }
+        .results-score {
+            display: grid;
+            place-content: center;  
+            width: 12rem;
+            margin-inline: auto;
+            background: var(--gradient-to-transparent);
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+        }
+            .results-score span {
+                display: block;
+                font-size: var(--font-size-bold);
+                font-weight: var(--font-wght-bold);
+                line-height: 1;
+                color: var(--nutural-color-100);
+            }
+    
+        .results-rank {
+            font-size: var(--font-size-medium);
+            font-weight: var(--font-wght-bold);
+            color: var(--nutural-color-100);
+        }
+    .summary {
+            padding: var(--padding)
+    }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background: hsl(var(--item-color), 0.1);
+            }
+        .summary-item svg {
+            stroke: hsl(var(--item-color));
+            }
+      
+        .summary-item-title {
+            color: hsl(var(--item-color));
+            font-weight: var(--font-wght-bold);
+            }
+    
+        .summary-item[data-item-type="accent-1"] {
+            --item-color: var(--accent-color-1);
+        }
+        .summary-item[data-item-type="accent-2"] {
+            --item-color: var(--accent-color-2);
+        }
+        .summary-item[data-item-type="accent-3"] {
+            --item-color: var(--accent-color-3);
+        }
+        .summary-item[data-item-type="accent-4"] {
+            --item-color: var(--accent-color-4);
+        }
+
+        .summary-score {
+            font-weight: var(--font-wght-bold);
+            color: hsl(var(--Dark-gray-blue), 0.5);
+        }
+        .summary-score span {
+            font-weight: var(--font-weight-bold);
+            color: var(--nutural-color-700);
+        }
 
 .attribution { 
     font-size: 11px; 
